@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "swagger": "java -jar swagger-codegen/swagger-codegen-cli.jar generate -i /home/hgmtrebing/WebstormProjects/AuswendigUi/src/resources/auswendig-swagger.json -l typescript-angular -o src/app/schema",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -22,6 +23,7 @@
     "@angular/router": "^18.2.0",
     "bootstrap": "^5.3.3",
     "rxjs": "~7.8.0",
+    "swagger-client": "^3.29.2",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"
   },

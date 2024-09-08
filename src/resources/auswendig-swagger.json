@@ -1,0 +1,516 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Auswendig API",
+    "description": "RESTful API for Auswendig Flash Card Application.",
+    "contact": {
+      "name": "Harry Trebing",
+      "email": "hgmtrebing@outlook.com"
+    },
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Generated server url"
+    }
+  ],
+  "tags": [
+    {
+      "name": "User Controller",
+      "description": "RESTful API for Auswendig Users."
+    },
+    {
+      "name": "Card Controller",
+      "description": "RESTful API for administering Auswendig Cards."
+    },
+    {
+      "name": "Deck Controller",
+      "description": "RESTful API for Auswendig Decks."
+    }
+  ],
+  "paths": {
+    "/api/v1/user/update-user": {
+      "put": {
+        "tags": [
+          "User Controller"
+        ],
+        "summary": "Modify an existing user.",
+        "description": "Modifies an existing user in the system.",
+        "operationId": "updateUser",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/deck/update-cardless-deck": {
+      "put": {
+        "tags": [
+          "Deck Controller"
+        ],
+        "summary": "Update Cardless Deck.",
+        "description": "Updates a pre-existing Cardless Deck in the Systm.",
+        "operationId": "updateCardlessDeck",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardlessDeckSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardlessDeckSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/card/add-card": {
+      "put": {
+        "tags": [
+          "Card Controller"
+        ],
+        "summary": "Update Card.",
+        "description": "Updates an existing Card in the System.",
+        "operationId": "updateCard",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardSchema"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Card Controller"
+        ],
+        "summary": "Add Card.",
+        "description": "Adds a new Card into the System.",
+        "operationId": "addCard",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/user/add-new-user": {
+      "post": {
+        "tags": [
+          "User Controller"
+        ],
+        "summary": "Create new user.",
+        "description": "Creates a new user in the system.",
+        "operationId": "createUser",
+        "parameters": [
+          {
+            "name": "schema",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/UserSchema"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/deck/add-cardless-deck": {
+      "post": {
+        "tags": [
+          "Deck Controller"
+        ],
+        "summary": "Add a Cardless Deck.",
+        "description": "Add a new Cardless Deck to the System.",
+        "operationId": "addCardlessDeck",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardlessDeckSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardlessDeckSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/user/get-user-by-username": {
+      "get": {
+        "tags": [
+          "User Controller"
+        ],
+        "summary": "Get User by Username.",
+        "description": "Get Individual User by Username.",
+        "operationId": "getUserByUsername",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/user/get-all-users": {
+      "get": {
+        "tags": [
+          "User Controller"
+        ],
+        "summary": "Get All Users.",
+        "description": "Get All Users in the System.",
+        "operationId": "getAllUsers",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserSchema"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/deck/get-all-cardless-decks": {
+      "get": {
+        "tags": [
+          "Deck Controller"
+        ],
+        "summary": "Get All Cardless Decks.",
+        "description": "Get All Cardless Decks in the System.",
+        "operationId": "getAllDecksCardless",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CardlessDeckSchema"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/card/get-cards-by-deck": {
+      "get": {
+        "tags": [
+          "Card Controller"
+        ],
+        "summary": "Get All Cards by Deck.",
+        "description": "Get All Cards for a given deck.",
+        "operationId": "getAllDeckCards",
+        "parameters": [
+          {
+            "name": "deckId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CardSchema"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/card/get-all-card": {
+      "get": {
+        "tags": [
+          "Card Controller"
+        ],
+        "summary": "Get All Cards.",
+        "description": "Get All Cards in the System.",
+        "operationId": "getAllCards",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CardSchema"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "UserSchema": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "description": "The user's unique username.",
+            "example": "orabbit"
+          },
+          "firstName": {
+            "type": "string",
+            "description": "The user's first name.",
+            "example": "Oswald"
+          },
+          "lastName": {
+            "type": "string",
+            "description": "The user's last name.",
+            "example": "Lucky Rabbit"
+          }
+        },
+        "description": "Schema to encapsulate user data."
+      },
+      "CardlessDeckSchema": {
+        "type": "object",
+        "properties": {
+          "externalId": {
+            "type": "string",
+            "description": "The System Identifier for this deck.",
+            "format": "uuid"
+          },
+          "deckName": {
+            "type": "string",
+            "description": "The name of the given deck.",
+            "example": "German-to-English Vocabulary"
+          },
+          "deckDescription": {
+            "type": "string",
+            "description": "The description of the given deck.",
+            "example": "Deck of English and German Vocabulary."
+          },
+          "ownerUsername": {
+            "type": "string",
+            "description": "The username of the deck's owner.",
+            "example": "orabbit"
+          },
+          "globalHint": {
+            "type": "string",
+            "description": "A global hint for all cards and sides."
+          },
+          "globalNote": {
+            "type": "string",
+            "description": "A global note for all cards and sides."
+          },
+          "questionSideName": {
+            "type": "string",
+            "description": "The name for the question side."
+          },
+          "answerSideName": {
+            "type": "string",
+            "description": "The name for the answer side."
+          },
+          "successCount": {
+            "type": "integer",
+            "description": "The total success count for this deck.",
+            "format": "int64"
+          },
+          "failureCount": {
+            "type": "integer",
+            "description": "The total failure count for this deck.",
+            "format": "int64"
+          },
+          "lastSuccess": {
+            "type": "string",
+            "description": "The last success date for this deck.",
+            "format": "date-time"
+          },
+          "lastFailure": {
+            "type": "string",
+            "description": "The last failure date for this deck.",
+            "format": "date-time"
+          }
+        },
+        "description": "Schema to encapsulate deck data (without cards)."
+      },
+      "CardSchema": {
+        "type": "object",
+        "properties": {
+          "cardExternalId": {
+            "type": "string",
+            "description": "The identifer for this Card.",
+            "format": "uuid"
+          },
+          "deckExternalId": {
+            "type": "string",
+            "description": "The identifier for the deck that owns this card.",
+            "format": "uuid"
+          },
+          "question": {
+            "type": "string",
+            "description": "The question for this card."
+          },
+          "answer": {
+            "type": "string",
+            "description": "The answer for this card."
+          },
+          "note": {
+            "type": "string",
+            "description": "The note for this card."
+          },
+          "hint": {
+            "type": "string",
+            "description": "The hint for this card."
+          },
+          "successCount": {
+            "type": "integer",
+            "description": "The success count for this code.",
+            "format": "int64"
+          },
+          "failureCount": {
+            "type": "integer",
+            "description": "The failure count for this card.",
+            "format": "int64"
+          },
+          "lastSuccess": {
+            "type": "string",
+            "description": "The last success date for this card.",
+            "format": "date-time"
+          },
+          "lastFailure": {
+            "type": "string",
+            "description": "The last failure date for this card.",
+            "format": "date-time"
+          }
+        },
+        "description": "A schema to encapsulate card data."
+      }
+    }
+  }
+}
